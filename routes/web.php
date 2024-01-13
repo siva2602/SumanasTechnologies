@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', [ProductController::class, 'listAllProducts'])->name('product.list');
+Route::get('/home', [ProductController::class, 'listAllProducts'])->name('home');
+
+Auth::routes();
+
+Route::post('/product/checkout/{id}', [ProductController::class, 'checkout'])->name('checkout');
+Route::get('/payment/success', [ProductController::class, 'success'])->name('checkout.success');
+Route::get('/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');
+Route::post('/webhook', [ProductController::class, 'webhook'])->name('checkout.webhook');
