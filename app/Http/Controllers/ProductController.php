@@ -89,7 +89,7 @@ class ProductController extends Controller
 
     public function cancel()
     {
-
+        return view('checkout-failed');
     }
 
     public function webhook()

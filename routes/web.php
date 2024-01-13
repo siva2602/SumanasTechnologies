@@ -27,5 +27,5 @@ Auth::routes();
 
 Route::post('/product/checkout/{id}', [ProductController::class, 'checkout'])->name('checkout');
 Route::get('/payment/success', [ProductController::class, 'success'])->name('checkout.success');
-Route::get('/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');
+Route::get('/payment/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');
 Route::post('/webhook', [ProductController::class, 'webhook'])->name('checkout.webhook');
